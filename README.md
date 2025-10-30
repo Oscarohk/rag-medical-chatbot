@@ -1,7 +1,6 @@
-# MediBot
+# **MediBot**
 
 # How to run?
-### Steps:
 
 ### STEP 01
 
@@ -46,5 +45,6 @@ python store_index.py
 python app.py
 ```
 
-### FINAL STEP - Open a browser and go to localhost:8080
+### FINAL STEP
+Open a browser and go to [localhost:8080](localhost:8080)
 
