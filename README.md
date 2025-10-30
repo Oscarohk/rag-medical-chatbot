@@ -8,6 +8,7 @@ Clone the repository
 ```bash
 git clone https://github.com/Oscarohk/rag-medical-chatbot.git
 ```
+
 ### STEP 01 - Create a conda environment after opening the repository
 
 ```bash
