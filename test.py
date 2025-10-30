@@ -12,9 +12,6 @@ from dotenv import load_dotenv
 from src.prompt import *
 from pinecone import Pinecone
 
-
-app = Flask(__name__)
-
 load_dotenv()
 PINECONE_API_KEY = os.environ.get("PINECONE_API_KEY")
 HUGGINGFACEHUB_API_TOKEN = os.environ.get("HUGGINGFACEHUB_API_TOKEN")
@@ -34,37 +31,5 @@ docsearch = PineconeVectorStore.from_existing_index(
 )
 
 retriever = docsearch.as_retriever(search_type="similarity", search_kwargs={"k":3})
-
-llm = HuggingFaceEndpoint(
-    repo_id="meta-llama/Llama-3.2-1B-Instruct",
-    task="text-generation",
-    max_new_tokens=512,
-    do_sample=False,
-    repetition_penalty=1.03,
-    provider="auto",  # let Hugging Face choose the best provider for you
-)
-chat_model = ChatHuggingFace(llm=llm)
-
-prompt = ChatPromptTemplate.from_messages(
-    [
-        ("system", system_prompt),
-        ("human", "{input}")
-    ]
-)
-
-question_answer_chain = create_stuff_documents_chain(chat_model, prompt)
-rag_chain = create_retrieval_chain(retriever, question_answer_chain)
-
-
-@app.route("/")
-def index():
-    return render_template("chat.html")
-
-@app.route("/get", methods=["GET", "POST"])
-def chat():
-    msg = request.form["msg"]
-    response = rag_chain.invoke({"input": msg})
-    return response["answer"]
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8080, debug=True)
+retrieved_docs = retriever.invoke("What is Acne?")
+print(retrieved_docs)
