@@ -1,4 +1,12 @@
 # **MediBot**
+<img width="1457" height="697" alt="螢幕擷取畫面 (250)" src="https://github.com/user-attachments/assets/a4689293-d190-4577-ac3b-16c919ed9d37" />
+
+# Techstack
+* Python
+* LangChain
+* Flask
+* HuggingFace
+* Pinecone
 
 # How to run?
 
@@ -46,5 +54,5 @@ python app.py
 ```
 
 ### FINAL STEP
-Open a browser and go to [localhost:8080](localhost:8080)
 
+Open a browser and go to _**localhost:8080**_
