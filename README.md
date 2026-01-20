@@ -46,5 +46,5 @@ python store_index.py
 python app.py
 ```
 
-### FINAL STEP - Open a browser and go to localhost:8080
+### FINAL STEP - Open a browser and go to _**localhost:8080**_
 
