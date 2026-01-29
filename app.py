@@ -1,6 +1,4 @@
 import os
-os.environ['HF_HOME'] = "E:/ohokin/.cache/"
-
 from flask import Flask, render_template, jsonify, request
 from src.helper import download_embeddings_model
 from langchain_pinecone import PineconeVectorStore
